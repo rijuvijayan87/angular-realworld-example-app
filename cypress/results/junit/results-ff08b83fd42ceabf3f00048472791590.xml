@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="19.5870" tests="4" failures="0">
+  <testsuite name="Root Suite" timestamp="2021-02-01T03:40:10" tests="0" file="cypress\integration\api.test.specs.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="api testing" timestamp="2021-02-01T03:40:10" tests="4" time="19.5870" failures="0">
+    <testcase name="api testing Create and validate article" time="7.0790" classname="Create and validate article">
+    </testcase>
+    <testcase name="api testing Intecepting and modifying" time="5.8180" classname="Intecepting and modifying">
+    </testcase>
+    <testcase name="api testing show your feed" time="2.5100" classname="show your feed">
+    </testcase>
+    <testcase name="api testing delete feed" time="4.1800" classname="delete feed">
+    </testcase>
+  </testsuite>
+</testsuites>

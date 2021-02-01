@@ -1,0 +1,163 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-02-01T03:40:10.622Z",
+    "end": "2021-02-01T03:40:30.373Z",
+    "duration": 19751,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "55d50e23-caab-453a-a999-33206638e177",
+      "title": "",
+      "fullFile": "cypress\\integration\\api.test.specs.js",
+      "file": "cypress\\integration\\api.test.specs.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "af36ad69-c1a7-4a70-9525-4edae6d5d5d7",
+          "title": "api testing",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create and validate article",
+              "fullTitle": "api testing Create and validate article",
+              "timedOut": null,
+              "duration": 7079,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept(\"POST\", \"**/articles\").as(\"postArticles\");\ncy.wait(\"@tags\");\ncy.get('[href=\"/editor\"]').click();\ncy.get('[placeholder=\"Article Title\"]').type(\"Test article\");\ncy.get('[placeholder=\"What\\'s this article about?\"]').type(\"test whats the article about\");\ncy.get('[placeholder=\"Write your article (in markdown)\"]').type(\"Writing the article. testing\");\ncy.get('[placeholder=\"Enter tags\"]').type(\"general\");\ncy.get(\"button\").click();\ncy.wait(\"@postArticles\");\ncy.get(\"@postArticles\").then(function (xhr) {\n  console.log(xhr);\n  expect(xhr.response.statusCode).to.equal(200);\n});",
+              "err": {},
+              "uuid": "b4590ffb-16dd-46c9-ac9a-3fae5c339c23",
+              "parentUUID": "af36ad69-c1a7-4a70-9525-4edae6d5d5d7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Intecepting and modifying",
+              "fullTitle": "api testing Intecepting and modifying",
+              "timedOut": null,
+              "duration": 5818,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// cy.intercept(\"POST\", \"**/articles\", (req) => {\n//   req.body.article.description =\n//     \"test whats the article about updated through interception\";\n// }).as(\"postArticles\");\ncy.intercept({\n  method: \"POST\",\n  path: \"articles\"\n}, function (req) {\n  req.reply(function (res) {\n    expect(res.body.article.description).to.equal(\"test whats the article about\");\n    res.body.article.description = \"test whats the articles about updated through interception\";\n  });\n}).as(\"postArticles\");\ncy.wait(\"@tags\");\ncy.get('[href=\"/editor\"]').click();\ncy.get('[placeholder=\"Article Title\"]').type(\"Test article\");\ncy.get('[placeholder=\"What\\'s this article about?\"]').type(\"test whats the article about\");\ncy.get('[placeholder=\"Write your article (in markdown)\"]').type(\"Writing the article. testing\");\ncy.get('[placeholder=\"Enter tags\"]').type(\"general\");\ncy.get(\"button\").click();\ncy.wait(\"@postArticles\").its(\"response.statusCode\").should(\"eq\", 200); // cy.get(\"@postArticles\").then((xhr) => {\n//   console.log(xhr);\n//   //expect(xhr.response.statusCode).to.equal(200);\n// });",
+              "err": {},
+              "uuid": "41e51c29-e583-4dfb-be15-06484b9f8bff",
+              "parentUUID": "af36ad69-c1a7-4a70-9525-4edae6d5d5d7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "show your feed",
+              "fullTitle": "api testing show your feed",
+              "timedOut": null,
+              "duration": 2510,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept(\"GET\", \"**/articles/feed*\", {\n  fixture: \"myArticles.json\"\n}).as(\"myArticles\");\ncy.wait(\"@myArticles\");\ncy.fixture(\"likeArticle\").then(function (file) {\n  var a = file.article.slug;\n  cy.intercept(\"POST\", \"**/articles/\" + a + \"/favorite\", file);\n});\ncy.intercept(\"GET\", \"**/articles*\", {\n  fixture: \"articles.json\"\n}).as(\"articles\");\ncy.contains(\"Global Feed\").click();\ncy.wait(\"@articles\");",
+              "err": {},
+              "uuid": "e84c65f1-f42f-47a7-be3a-aa22a066a001",
+              "parentUUID": "af36ad69-c1a7-4a70-9525-4edae6d5d5d7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "delete feed",
+              "fullTitle": "api testing delete feed",
+              "timedOut": null,
+              "duration": 4180,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var articleBody = {\n  article: {\n    tagList: [],\n    title: \"test automation\",\n    description: \"article on test automation\",\n    body: \"this is regarding how to perform test automation in a corporate environment\"\n  }\n};\ncy.get(\"@token\").then(function (token) {\n  cy.request({\n    url: \"https://conduit.productionready.io/api/articles/\",\n    headers: {\n      Authorization: \"Token \" + token\n    },\n    method: \"POST\",\n    body: articleBody\n  }).then(function (res) {\n    expect(res.status).to.equal(200);\n    cy.contains(\"Global Feed\").click();\n    cy.get(\".article-preview\").contains(\"test automation\").click();\n    cy.contains(\"Delete Article\").click();\n    cy.request({\n      url: \"https://conduit.productionready.io/api/articles?limit=10&offset=0\",\n      headers: {\n        Authorization: \"Token \" + token\n      },\n      method: \"GET\"\n    }).its(\"body\").then(function (body) {\n      expect(body.articles[0].title).to.be.not.equal(\"test automation\");\n    });\n  });\n});",
+              "err": {},
+              "uuid": "fc8583e8-859e-4453-bfd8-5a0e029e6311",
+              "parentUUID": "af36ad69-c1a7-4a70-9525-4edae6d5d5d7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b4590ffb-16dd-46c9-ac9a-3fae5c339c23",
+            "41e51c29-e583-4dfb-be15-06484b9f8bff",
+            "e84c65f1-f42f-47a7-be3a-aa22a066a001",
+            "fc8583e8-859e-4453-bfd8-5a0e029e6311"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 19587,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

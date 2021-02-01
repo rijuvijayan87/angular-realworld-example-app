@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.5480" tests="1" failures="1">
+  <testsuite name="Root Suite" timestamp="2021-02-01T03:38:30" tests="0" file="cypress\integration\api.test.second.specs.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="api testing" timestamp="2021-02-01T03:38:30" tests="1" time="0.5480" failures="1">
+    <testcase name="api testing &quot;before each&quot; hook: login to the application for &quot;delete feed&quot;" time="0.5480" classname="&quot;before each&quot; hook: login to the application for &quot;delete feed&quot;">
+      <failure message="`cy.request()` failed on:
+
+http://localhost:4200/undefinedusers/login
+
+The response we received from your web server was:
+
+  &gt; 404: Not Found
+
+This was considered a failure because the status code was not `2xx` or `3xx`.
+
+If you do not want status codes to cause failures pass the option: `failOnStatusCode: false`
+
+-----------------------------------------------------------
+
+The request we sent was:
+
+Method: POST
+URL: http://localhost:4200/undefinedusers/login
+Headers: {
+  &quot;Connection&quot;: &quot;keep-alive&quot;,
+  &quot;user-agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/6.3.0 Chrome/87.0.4280.141 Electron/11.2.0 Safari/537.36&quot;,
+  &quot;accept&quot;: &quot;*/*&quot;,
+  &quot;accept-encoding&quot;: &quot;gzip, deflate&quot;,
+  &quot;content-type&quot;: &quot;application/json&quot;,
+  &quot;content-length&quot;: 70
+}
+Body: {&quot;user&quot;:{&quot;email&quot;:&quot;rijuvijayan@gmail.com&quot;,&quot;password&quot;:&quot;testautomation&quot;}}
+
+-----------------------------------------------------------
+
+The response we got was:
+
+Status: 404 - Not Found
+Headers: {
+  &quot;x-powered-by&quot;: &quot;Express&quot;,
+  &quot;access-control-allow-origin&quot;: &quot;*&quot;,
+  &quot;content-security-policy&quot;: &quot;default-src &apos;none&apos;&quot;,
+  &quot;x-content-type-options&quot;: &quot;nosniff&quot;,
+  &quot;content-type&quot;: &quot;text/html; charset=utf-8&quot;,
+  &quot;content-length&quot;: &quot;160&quot;,
+  &quot;date&quot;: &quot;Mon, 01 Feb 2021 03:38:31 GMT&quot;,
+  &quot;connection&quot;: &quot;keep-alive&quot;
+}
+Body: &lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Error&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;pre&gt;Cannot POST /undefinedusers/login&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+https://on.cypress.io/request
+
+Because this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `api testing`" type="CypressError"><![CDATA[CypressError: `cy.request()` failed on:
+
+http://localhost:4200/undefinedusers/login
+
+The response we received from your web server was:
+
+  > 404: Not Found
+
+This was considered a failure because the status code was not `2xx` or `3xx`.
+
+If you do not want status codes to cause failures pass the option: `failOnStatusCode: false`
+
+-----------------------------------------------------------
+
+The request we sent was:
+
+Method: POST
+URL: http://localhost:4200/undefinedusers/login
+Headers: {
+  "Connection": "keep-alive",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/6.3.0 Chrome/87.0.4280.141 Electron/11.2.0 Safari/537.36",
+  "accept": "*/*",
+  "accept-encoding": "gzip, deflate",
+  "content-type": "application/json",
+  "content-length": 70
+}
+Body: {"user":{"email":"rijuvijayan@gmail.com","password":"testautomation"}}
+
+-----------------------------------------------------------
+
+The response we got was:
+
+Status: 404 - Not Found
+Headers: {
+  "x-powered-by": "Express",
+  "access-control-allow-origin": "*",
+  "content-security-policy": "default-src 'none'",
+  "x-content-type-options": "nosniff",
+  "content-type": "text/html; charset=utf-8",
+  "content-length": "160",
+  "date": "Mon, 01 Feb 2021 03:38:31 GMT",
+  "connection": "keep-alive"
+}
+Body: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot POST /undefinedusers/login</pre>
+</body>
+</html>
+
+https://on.cypress.io/request
+
+Because this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `api testing`
+    at http://localhost:4200/__cypress/runner/cypress_runner.js:159046:21
+    at tryCatcher (http://localhost:4200/__cypress/runner/cypress_runner.js:10609:23)
+    at Promise._settlePromiseFromHandler (http://localhost:4200/__cypress/runner/cypress_runner.js:8544:31)
+    at Promise._settlePromise (http://localhost:4200/__cypress/runner/cypress_runner.js:8601:18)
+    at Promise._settlePromise0 (http://localhost:4200/__cypress/runner/cypress_runner.js:8646:10)
+    at Promise._settlePromises (http://localhost:4200/__cypress/runner/cypress_runner.js:8726:18)
+    at _drainQueueStep (http://localhost:4200/__cypress/runner/cypress_runner.js:5316:12)
+    at _drainQueue (http://localhost:4200/__cypress/runner/cypress_runner.js:5309:9)
+    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (http://localhost:4200/__cypress/runner/cypress_runner.js:5325:5)
+    at Async.drainQueues (http://localhost:4200/__cypress/runner/cypress_runner.js:5195:14)
+From Your Spec Code:
+    at Context.eval (http://localhost:4200/__cypress/tests?p=cypress\support\index.js:136:6)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>
