@@ -1,0 +1,7 @@
+{
+  "env": {
+    "username": "rijuvijayan@gmail.com",
+    "password": "testautomation",
+    "apiUrl": "https://conduit.productionready.io/api/"
+  }
+}

@@ -35,7 +35,7 @@ Cypress.Commands.add("loginToApplication", () => {
   };
 
   cy.request({
-    url: "https://conduit.productionready.io/api/users/login",
+    url: Cypress.env("apiUrl") + "users/login",
     method: "POST",
     body: loginPayload,
   })
