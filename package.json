@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint --force",
     "e2e": "ng e2e",
-    "cypress:run": "npx cypress run",
+    "cypress:run": "npx cypress run --env configFile=qa --record --key b8298acf-3c41-479e-b6cc-38114f117ab9",
+    "cypress:run_browser": "npm run cypress:run -- --browser chrome --group chrome & npm run cypress:run -- --browser firefox --group firefox",
     "cypress:e2e": "start-test start http-get://localhost:4200 cypress:run",
     "delete:reports": "rm cypress/results/* || true",
     "prereport": "npm run delete:reports"
